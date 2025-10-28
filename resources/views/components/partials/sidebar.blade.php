@@ -65,6 +65,36 @@
                         </button>
                     </form>
                 </li>
+                <li class="nav item">
+                    <a href="{{ route('obat.index') }}"
+                        class="nav-link {{ request()->routeIs('obat.*') ? 'active' : '' }}">
+                        <i class="fas fa-pills nav-icon"></i>
+                        <p>Manajemen Obat</p>
+                    </a>
+                </li>
+                <li class="nav item">
+                    <a href="{{ route('dokter.index') }}"
+                        class="nav-link {{ request()->routeIs('dokter.*') ? 'active' : '' }}">
+                        <i class="fas fa-user-md nav-icon"></i>
+                        <p>Manajemen Dokter</p>
+                    </a>
+                </li>
+                <li class="nav item">
+                    <a href="{{ route('pasien.index') }}"
+                        class="nav-link {{ request()->routeIs('pasien.*') ? 'active' : '' }}">
+                        <i class="fas fa-user-injured nav-icon"></i>
+                        <p>
+                            Manajemen Pasien
+                        </p>
+                    </a>
+                </li>
+                <li class="nav item">
+                    <a href="{{ route('polis.index') }}"
+                        class="nav-link {{ request()->routeIs('polis.*') ? 'active' : '' }}">
+                        <i class="fas fa-hospital nav-item"></i>
+                        <p>Manajemen Poli</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         {{-- <form method="POST" action="/logout" class="btn btn-danger ml-4">

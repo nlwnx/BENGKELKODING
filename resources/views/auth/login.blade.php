@@ -1,6 +1,6 @@
 <h2>Login</h2>
 
-@if ($erorrs-> any())
+@if ($errors-> any())
     <p style="color: red">{{ $errors->first() }}</p>
 @endif
 
