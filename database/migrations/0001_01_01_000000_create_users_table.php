@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('alamat')->nullable();
             $table->string('id_poli')->nullable()->constrained('poli')->cascadeOnDelete;
-            $table->string('no__ktp')->nullable();
+            $table->string('no_ktp')->nullable();
             $table->string('no_hp')->nullable();
             $table->string('no_rm', 25)->nullable();
             $table->enum('role', ['pasien', 'dokter', 'admin']);

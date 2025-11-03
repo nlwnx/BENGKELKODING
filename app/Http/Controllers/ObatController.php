@@ -25,7 +25,7 @@ class ObatController extends Controller
 
         Obat::create([
             'nama_obat' => $request->nama_obat,
-            'satuan' => $request->satuan,
+            'kemasan' => $request->kemasan,
             'harga' => $request->harga
         ]);
 
@@ -50,7 +50,7 @@ class ObatController extends Controller
         $obat = Obat::findOrFail($id);
         $obat->update([
             'nama_obat' => $request->nama_obat,
-            'kemasan' => $request->satuan,
+            'kemasan' => $request->kemasan,
             'harga' => $request->harga,
         ]);
 

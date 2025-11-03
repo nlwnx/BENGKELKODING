@@ -30,49 +30,7 @@
                             </p>
                         </a>
                     </li>
-                @endif
-
-                <!-- ROLE PASIEN -->
-                @if (request()->is('pasien*'))
-                    <li class="nav-item">
-                        <a href="{{ route('pasien.dashboard') }}" class="nav-link {{ request()->routeIs('pasien.dashboard') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-columns"></i>
-                            <p>
-                                Dashboard Pasien
-                            </p>
-                        </a>
-                    </li>
-                @endif
-
-                <!-- ROLE DOKTER -->
-                @if (request()->is('dokter*'))
-                    <li class="nav-item">
-                        <a href="{{ route('dokter.dashboard') }}" class="nav-link {{ request()->routeIs('dokter.dashboard') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-columns"></i>
-                            <p>
-                                Dashboard Dokter
-                            </p>
-                        </a>
-                    </li>
-                @endif
-
-                <li class="nav-item ">
-                    <form method="POST" action="/logout">
-                        @csrf
-                        <button type="submit" class="nav-link btn btn-danger text-left w-100">
-                            <i class="nav-icon fas fa-sign-out-alt"></i>
-                            <p>Keluar</p>
-                        </button>
-                    </form>
-                </li>
-                <li class="nav item">
-                    <a href="{{ route('obat.index') }}"
-                        class="nav-link {{ request()->routeIs('obat.*') ? 'active' : '' }}">
-                        <i class="fas fa-pills nav-icon"></i>
-                        <p>Manajemen Obat</p>
-                    </a>
-                </li>
-                <li class="nav item">
+                    <li class="nav item">
                     <a href="{{ route('dokter.index') }}"
                         class="nav-link {{ request()->routeIs('dokter.*') ? 'active' : '' }}">
                         <i class="fas fa-user-md nav-icon"></i>
@@ -94,6 +52,63 @@
                         <i class="fas fa-hospital nav-item"></i>
                         <p>Manajemen Poli</p>
                     </a>
+                </li>
+                <li class="nav item">
+                    <a href="{{ route('obat.index') }}"
+                        class="nav-link {{ request()->routeIs('obat.*') ? 'active' : '' }}">
+                        <i class="fas fa-pills nav-icon"></i>
+                        <p>Manajemen Obat</p>
+                    </a>
+                </li>
+
+                @endif
+
+                <!-- ROLE PASIEN -->
+                @if (request()->is('pasien*'))
+                    <li class="nav-item">
+                        <a href="{{ route('pasien.dashboard') }}" class="nav-link {{ request()->routeIs('pasien.dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-columns"></i>
+                            <p>
+                                Dashboard Pasien
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav item">
+                    <a href="{{ route('pasien.daftar') }}"
+                        class="nav-link {{ request()->routeIs('pasien.daftar') ? 'active' : '' }}">
+                        <i class="fas fa-hospital-user nav-item"></i>
+                        <p>Poli</p>
+                    </a>
+                </li>
+                @endif
+
+                <!-- ROLE DOKTER -->
+                @if (request()->is('dokter*'))
+                    <li class="nav-item">
+                        <a href="{{ route('dokter.dashboard') }}" class="nav-link {{ request()->routeIs('dokter.dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-columns"></i>
+                            <p>
+                                Dashboard Dokter
+                            </p>
+                        </a>
+                    </li>
+                     <li class="nav item">
+                    <a href="{{ route('jadwal-periksa.index') }}"
+                        class="nav-link {{ request()->routeIs('jadwal-periksa.*') ? 'active' : '' }}">
+                        <i class="fas fa-hospital nav-item"></i>
+                        <p> Jadwal Periksa</p>
+                    </a>
+                </li>
+                @endif
+
+                <li class="nav-item ">
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <button type="submit" class="nav-link btn btn-danger text-left w-100">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p>Keluar</p>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </nav>

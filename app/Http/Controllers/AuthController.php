@@ -31,21 +31,48 @@ class AuthController extends Controller
         return back()->withErrors(['email' => 'Email atau Password anda salah!']);
     }
 
+    public function showRegister(){
+        return view('auth.register');
+    }
+
     public function register(Request $request){
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'alamat' => ['required', 'string', 'max:255'],
-            'no_ktp' => ['required', 'string', 'max:30'],
             'no_hp' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email','max:255', 'unique:users,email'],
+            'no_ktp' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed'],
         ]);
+
+        // Cek apakah nomor KTP sudah terdaftar
+        if (User::where('no_ktp', $request->no_ktp)->exists()) {
+            return back()->withErrors(['no_ktp' => 'Nomor Ktp Sudah terdaftar']);
+        }
+
+        $no_rm = date('Ym') . '-' . str_pad(
+            User::where('no_rm', 'like', date('Ym') . '-%')->count() + 1,
+            3,
+            '0',
+            STR_PAD_LEFT
+        );
+
+        /**
+         * Y m menghasilkan string tahun dan bulan
+         * User::where('no_rm', 'like', date('Ym') . '-%')->count() + 1,
+         * menghitung berapa banyak pasien yang sudah punya no_rm dengan prefix bulan ini dan +1 agar nomor berikutnya jadi urutan ke 6
+         * 4. str_pad(..., 3, '0', STR_PAD_LEFT)
+         * Menambahkan nol di depan agar hasilnya selalu 3 digit.
+         * output : 202509-006
+         */
 
         User::create([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'no_ktp' => $request->no_ktp,
             'no_hp' => $request->no_hp,
+            'no_rm' => $no_rm,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'pasien',
@@ -53,4 +80,10 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
+    }
+
 }
