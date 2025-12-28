@@ -41,7 +41,7 @@ class PasienController extends Controller
             'role' => 'pasien',
         ]);
 
-        return redirect()->route('admin.pasiens.index')
+        return redirect()->route('pasien.index')
             ->with('message', 'Data Pasien berhasil di Tambah')
             ->with('type', 'success');
     }
@@ -76,7 +76,7 @@ class PasienController extends Controller
 
         $pasien->update($updateData);
 
-        return redirect()->route('admin.pasiens.index')
+        return redirect()->route('pasien.index')
             ->with('message', 'Data Pasien berhasil di Update')
             ->with('type', 'success');
     }
@@ -85,7 +85,7 @@ class PasienController extends Controller
     {
         $pasien->delete();
 
-        return redirect()->route('admin.pasiens.index')
+        return redirect()->route('pasien.index')
             ->with('message', 'Data Pasien berhasil di Hapus')
             ->with('type', 'success');
     }

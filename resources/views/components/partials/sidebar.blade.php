@@ -93,12 +93,26 @@
                         </a>
                     </li>
                      <li class="nav item">
-                    <a href="{{ route('jadwal-periksa.index') }}"
-                        class="nav-link {{ request()->routeIs('jadwal-periksa.*') ? 'active' : '' }}">
-                        <i class="fas fa-hospital nav-item"></i>
-                        <p> Jadwal Periksa</p>
-                    </a>
-                </li>
+                        <a href="{{ route('jadwal-periksa.index') }}"
+                            class="nav-link {{ request()->routeIs('jadwal-periksa.*') ? 'active' : '' }}">
+                            <i class="fas fa-hospital nav-item"></i>
+                            <p> Jadwal Periksa</p>
+                        </a>
+                    </li>
+                    <li class="nav item">
+                        <a href="{{ route('periksa-pasien.index') }}"
+                            class="nav-link {{ request()->routeIs('periksa-pasien.*') ? 'active' : '' }}">
+                            <i class="fas fa-stethoscope nav-icon"></i>
+                            <p> Periksa Pasien</p>
+                        </a>
+                    </li>
+                    <li class="nav item">
+                        <a href="{{ route('dokter.riwayat-pasien.index') }}"
+                            class="nav-link {{ request()->routeIs('dokter.riwayat-pasien.*') ? 'active' : '' }}">
+                            <i class="fas fa-history nav-icon"></i>
+                            <p> Riwayat Pasien</p>
+                        </a>
+                    </li>
                 @endif
 
                 <li class="nav-item ">

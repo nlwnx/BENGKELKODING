@@ -12,7 +12,7 @@ class Poli extends Model
         'nama_poli',
         'keterangan'
     ];
-
+    
     public function dokters(){
         return $this->hasMany(User::class, 'id_poli');
     }
